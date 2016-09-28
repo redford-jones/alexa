@@ -1,0 +1,46 @@
+{
+    "intents": [
+        {
+            "intent": "AMAZON.HelpIntent"
+        },
+        {
+            "intent": "LightControl",
+            "slots": [
+                {
+                    "name": "command",
+                    "type": "ON_OR_OFF"
+                }
+            ]
+        },
+        {
+            "intent": "AMAZON.StopIntent"
+        },
+        {
+            "intent": "AMAZON.RepeatIntent"
+        },
+        {
+            "intent": "AMAZON.NoIntent"
+        },
+        {
+            "intent": "AMAZON.YesIntent"
+        },
+        {
+            "intent": "Taxes"
+        },
+        {
+            "intent": "Benefits"
+        },
+        {
+            "intent": "DrivingLicense"
+        },
+        {
+            "intent": "Passport"
+        },
+        {
+            "intent": "IncomeTax"
+        },
+        {
+            "intent": "HousingBenefit"
+        }
+    ]
+}
