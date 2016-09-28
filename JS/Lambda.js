@@ -330,7 +330,7 @@ function getCarTaxInformation(stage, shouldEndSession) {
     response.speechOutput = '';
     response.stage = stage;
     if(vehicleReg){
-        callApi('https://dvlasearch.appspot.com/DvlaSearch?apikey=CAPGEMINICWIN16&licencePlate='+vehicleReg, function(res) {
+        callApi('https://dvlasearch.appspot.com/DvlaSearch?apikey={}&licencePlate='+vehicleReg, function(res) {
             if (!res){
             response.speechOutput = "I'm sorry, I have no information"; 
             } else {
