@@ -149,7 +149,9 @@ function handleIntentRequest(intent, session, callback) {
         case "SearchGovUK":
             //speechOutput = 
             break;
-        case "carTax":
+        case "CarTax":
+            speechOutput = "I Can't drive";
+            // speechOutput = getCarTaxInformation();
             break;
         case "DrivingLicense":
             speechOutput = "Please tell me your drivers license number. It's item 5 on your drivers license"
@@ -321,6 +323,32 @@ function searchGovUK(searchQuery, eventCallback) {
     });
 }
 
+function getCarTaxInformation(stage, shouldEndSession) {
+    var vehicleReg = slots.registration.value;
+    var response = {}, taxStatus;
+    response.shouldEndSession = shouldEndSession;
+    response.speechOutput = '';
+    response.stage = stage;
+    if(vehicleReg){
+        callApi('https://dvlasearch.appspot.com/DvlaSearch?apikey=CAPGEMINICWIN16&licencePlate='+vehicleReg, function(res) {
+            if (!res){
+            response.speechOutput = "I'm sorry, I have no information"; 
+            } else {
+                if(res.taxStatus ==="Tax not due"){
+                    var taxDue = res.taxDetails.split(': ');
+                    taxStatus ='not due until '+taxDue[1];
+                } else{
+                    taxStatus='due now';
+                }
+                response.speechOutput = "the tax on your "+res.make+" is "+taxStatus;
+                return response.speechOutput;
+            }
+        })
+    } else{
+        response.speechOutput="I'm sorry, you didn't provide me with a vehicle registration number";
+    }
+    return response;
+};
 
 function getTaxInformation(stage, shouldEndSession) {
     var response = {};

@@ -28,6 +28,14 @@
             "intent": "Taxes"
         },
         {
+            "intent": "CarTax",
+            "slots":[{
+                "name":"registration",
+                "type":"CarTaxVehicleReg"
+                }
+            ]
+        },
+        {
             "intent": "Benefits"
         },
         {
